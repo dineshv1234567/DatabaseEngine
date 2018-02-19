@@ -1,73 +1,47 @@
 package goal_1;
-import goal_5.filterData;
-import java.util.ArrayList;
 import java.util.regex.*;
 
 public class ExtractWords {
 
 	public void find(String query) {
-             ArrayList<String> columns=new ArrayList<String>();
-             ArrayList<String> condition=new ArrayList<String>();
 		String queryWords[] = query.split(" ");
-		QueryParameters param=new QueryParameters();
+		
 		//Check file name
-		System.out.println("|||||||||||||||||||||||||||||||||||||||\\");
+		if(query.contains("csv")) {
 		for(String val:queryWords) {
-		boolean fileName=Pattern.compile(".+csv",Pattern.CASE_INSENSITIVE).matcher(val).matches();
+		boolean fileName=Pattern.compile(".*csv",Pattern.CASE_INSENSITIVE).matcher(val).matches(); 	
 		if(fileName==true)
 		System.out.println("Filename:"+val);
-                param.setFileName(val);
-                break;
 		}
-		
+		}
 		
 		//Before where part
 		if(query.contains("where")) {
-                    String beforeWhere = query.substring(0, query.indexOf("where")-1);
-		System.out.println("Before \"where\" part:"+beforeWhere);
-                param.setBeforeWhere(beforeWhere);
+		System.out.println("Before \"where\" part:"+query.substring(0, query.indexOf("where")-1));
 		}
 		
 		//After where part
-                String afterWherePart="";
+		String afterWherePart="";
 		if(query.contains("where")) {
 		afterWherePart=query.substring(query.lastIndexOf("where")+6);
 		System.out.println("After \"where\" part:"+afterWherePart);
-                param.setAfterWhere(afterWherePart);
 		}
 		
 		//Separate conditions
-//		String[] separateByAnd = afterWherePart.split("and");
-//		System.out.println("Conditions:");
-//		for(String val:separateByAnd)
-//		{
-//			String[] separateByOr = val.split("or");
-//			if(separateByOr.length>1){
-//			for(String val1:separateByOr) {
-//				System.out.println(val1);
-//                                param.addConditions(val1);
-//                                condition.add(val1);
-//			}
-//			}
-//		}
-                // String afterWherepart=" city>300 and city<200";
-        String[] separateByAnd = afterWherePart.split("and");
+		String[] separateByAnd = afterWherePart.split("and");
+		System.out.println("Conditions:");
 		for(String val:separateByAnd)
 		{
 			String[] separateByOr = val.split("or");
-			{
+			if(separateByOr.length>1){
 			for(String val1:separateByOr) {
-				System.out.println(val1); 
-                                 param.addConditions(val1);
-                              condition.add(val1);
+				System.out.println(val1);
 			}
 			}
 		}
-                filterData fs=new filterData();
-                fs.filterWheretField(condition);
 		
 		//checks logical operators
-		//System.out.println("Conditional Operators:");
+		System.out.println("Conditional Operators:");
 		if(query.contains("and")) 
 		System.out.println("and");
 		if(query.contains("or")) 
@@ -80,13 +54,8 @@ public class ExtractWords {
 		String[] temp2=temp1[1].split(",");
 		for(String val:temp2) {
 			System.out.println(val);
-                        param.addColumns(val);
-                        columns.add(val);
 		}
-
 		
-                fs.filterSelectField(columns);
-
 		//Check orderBy field
 		String orderBy="";
 		if(query.contains("order by")) {
@@ -102,7 +71,6 @@ public class ExtractWords {
 			String[] orderByColm=orderBy.split(",");
 			for(String val:orderByColm) {
 				System.out.println(val);
-                                param.addColumnsOrderBy(val);
 			}
 		}
 		
@@ -121,23 +89,19 @@ public class ExtractWords {
 			String[] groupByColm=groupBy.split(",");
 			for(String val:groupByColm) {
 				System.out.println(val);
-                                param.addColumnsGroupBy(val);
 			}
 		}
 		
 		//Check aggregate functions
 		if((query.contains("avg")) || (query.contains("sum")) || (query.contains("max")) || (query.contains("min")) || (query.contains("count"))) {
-		AggregateFunction aggFnc=new AggregateFunction();
-                    System.out.println("Aggregate functions:");
+		System.out.println("Aggregate functions:");
 			for(String val:queryWords) {
 			boolean agg=Pattern.compile("(.*avg.*|.*min.*|.*max.*|.*count.*|.*sum.*)",Pattern.CASE_INSENSITIVE).matcher(val).matches(); 	
-			if(agg==true){
+			if(agg==true)
 			System.out.println(val);
-                        aggFnc.setAgg(val);
-                            }
 		}
 		}
 	}
 	
-//Entered Query:select kk,tinder,kk from gurgaon dd.csv where dd and gg or ff order by test,nikhil group by ff sum(a)
+//Entered Query:select kk,tinder,kk from gurgaon dd.csv where dd and gg or ff order by test,nikhil group by	ff sum(a)
 }
