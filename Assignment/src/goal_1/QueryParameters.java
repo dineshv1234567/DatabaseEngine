@@ -22,7 +22,7 @@ public class QueryParameters {
       this.filename=fileName;
   }
 
-  public String getFileName(String fileName){
+  public String getFileName(){
       return this.filename;
   }
 
@@ -43,19 +43,18 @@ public class QueryParameters {
   }
 
   public void addConditions(String cond){
-      conditions.add(cond);
+      this.conditions.add(cond);
   }
 
-   public ArrayList getConditions(){
+   public ArrayList<String> getConditions(){
       return conditions;
   }
 
    public void addColumns(String col){
-      columns.add(col);
-     // System.out.println("||||||||||||||||||||||||||||||||||||||||||||||"+columns);
+      this.columns.add(col);
   }
 
-   public ArrayList getColumns(){
+   public ArrayList<String> getColumns(){
        return columns;
 
   }
@@ -64,7 +63,7 @@ public class QueryParameters {
       columnsOrderBy.add(col);
   }
 
-   public ArrayList getColumnsOderBy(){
+   public ArrayList<String> getColumnsOrderBy(){
       return columnsOrderBy;
   }
 
@@ -72,7 +71,7 @@ public class QueryParameters {
       columnsGroupBy.add(col);
   }
 
-   public ArrayList getColumnsGroupBy(){
+   public ArrayList<String> getColumnsGroupBy(){
       return columnsGroupBy;
   }
 }

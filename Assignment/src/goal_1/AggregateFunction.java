@@ -34,7 +34,7 @@ public class AggregateFunction {
                       if(keyword.equals("max"))
                           max.add(col);
                       else if(keyword.equals("min"))
-                          min.add(col);
+                         min.add(col);
                       else if(keyword.equals("avg"))
                           avg.add(col);
                       else if(keyword.equals("count"))
