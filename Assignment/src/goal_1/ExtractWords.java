@@ -11,14 +11,21 @@ public class ExtractWords {
 		String queryWords[] = query.split(" ");
 		QueryParameters param=new QueryParameters();
 		//Check file name
-		System.out.println("|||||||||||||||||||||||||||||||||||||||\\");
+		System.out.println("|||||||||||||||||||||||||||||||||||||||");
 		for(String val:queryWords) {
 		boolean fileName=Pattern.compile(".+csv",Pattern.CASE_INSENSITIVE).matcher(val).matches();
 		if(fileName==true)
-		System.out.println("Filename:"+val);
+		{System.out.println("Filename:"+val);
                 param.setFileName(val);
-                break;
+                break;}
 		}
+//		if(query.contains("csv")) {
+//			for(String val:queryWords) {
+//			boolean fileName=Pattern.compile(".*csv",Pattern.CASE_INSENSITIVE).matcher(val).matches(); 	
+//			if(fileName==true)
+//			System.out.println("Filename:"+val);
+//			}
+//			}
 		
 		
 		//Before where part
@@ -59,6 +66,7 @@ public class ExtractWords {
 			for(String val1:separateByOr) {
 				System.out.println(val1); 
                                  param.addConditions(val1);
+                                 val1.trim();
                               condition.add(val1);
 			}
 			}
@@ -81,6 +89,7 @@ public class ExtractWords {
 		for(String val:temp2) {
 			System.out.println(val);
                         param.addColumns(val);
+                        val.trim();
                         columns.add(val);
 		}
 

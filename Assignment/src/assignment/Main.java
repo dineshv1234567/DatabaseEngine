@@ -17,8 +17,8 @@ public class Main {
 	ExtractWords extract=new ExtractWords();
 	extract.find(query);
 	//System.out.println("Filtering data on Select Fields:");
-        //filterData filteringData=new filterData();
-        //filteringData.filterSelectField();
+       filterData filteringData=new filterData();
+        filteringData.filterSelectedField();
 	
 	}
 }
