@@ -6,6 +6,7 @@
 package goal_1;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -18,7 +19,10 @@ public class QueryParameters {
   private ArrayList<String> columnsOrderBy=new ArrayList<String>();
   private ArrayList<String> columnsGroupBy=new ArrayList<String>();
 
-  public void setFileName(String fileName){
+  public void setFileName(String fileName) throws Exception{
+	  if(Pattern.compile("1.csv",Pattern.CASE_INSENSITIVE).matcher(fileName).matches())
+		  {throw new Exception();}
+	  else
       this.filename=fileName;
   }
 

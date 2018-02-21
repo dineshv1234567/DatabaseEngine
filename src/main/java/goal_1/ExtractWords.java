@@ -5,7 +5,7 @@ import java.util.regex.*;
 
 public class ExtractWords {
 
-	public QueryParameters find(String query) {
+	public QueryParameters find(String query) throws Exception {
 		String queryWords[] = query.split(" ");
 		QueryParameters param=new QueryParameters();
 		
