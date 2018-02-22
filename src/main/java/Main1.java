@@ -34,6 +34,7 @@ public class Main1 {
 			  System.out.println("Get Columns "+obj1.getColumns());
 			  System.out.println("Columns in Order By "+obj1.getColumnsOrderBy());
 			  System.out.println("Columns in Group By "+obj1.getColumnsGroupBy());
+			  System.out.println("Operators "+obj1.getOperator());
 			  System.out.println("CSV File-------------------"); 
 			
 			 readCsvFile readFile=new readCsvFile();
@@ -43,7 +44,7 @@ public class Main1 {
 			 LinkedHashMap<String,ArrayList<Object>> map = mp.FileRead();
              int row=mp.getHeader();
              
-            Execute exe=new Execute(map,row,obj1.getConditions(),obj1.getColumns());
+            Execute exe=new Execute(map,row,obj1.getConditions(),obj1.getColumns(),obj1.getOperator());
              exe.exequery();
 //             for(int i=0;i<MakeMap.header.length;i++) {
 //         		ArrayList<Object> p= map.get(MakeMap.header[i]);

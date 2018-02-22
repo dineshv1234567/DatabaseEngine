@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class filterData {
-	 ArrayList<String> columns=new ArrayList<String>();
-    ArrayList<String> condition=new ArrayList<String>();
+	 ArrayList<String> columns=new ArrayList<>();
+    ArrayList<String> condition=new ArrayList<>();
     
 public void filterWheretField(ArrayList<String> condition){
 this.condition=condition;

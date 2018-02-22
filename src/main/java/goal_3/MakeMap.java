@@ -34,11 +34,16 @@ public class MakeMap {
     	}
     	head=br.readLine();
     }
+    
+//	for(String i:MakeMap.header) {
+//		System.out.println(i);
+//	}
+	
 //    for(int i=0;i<header.length;i++) {
 //	    	ArrayList<Object> p= obj.get(header[i]);
-//	    	System.out.println(header[i]+"|||||||||||||"+p.size());
+//	    	System.out.println(header[i]+"|||||||||||||"+p);
 //	    }
-//	    System.out.println("@@@@@@@@@@@"+obj.keySet());
+	  //  System.out.println("@@@@@@@@@@@"+obj.keySet());
     	
     br.close();
     row = (obj.get(header[0])).size();

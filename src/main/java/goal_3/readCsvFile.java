@@ -27,7 +27,7 @@ public class readCsvFile {
         String[] columnName={};
         String[] columnData={};
         int i;
-        ArrayList<String> lines = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<>();
       //  LinkedHashMap<String, ArrayList<Object>> fileMap=new LinkedHashMap<String, ArrayList<Object>>();
         i=0;
         try  {

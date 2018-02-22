@@ -60,6 +60,20 @@ public class ExtractWords {
 		if(query.contains("or")) 
 		System.out.println("Conditional Operator: or");
 		
+		Pattern p = Pattern.compile("and");
+		Matcher m = p.matcher(query);
+		for(String word:queryWords) {
+			if(Pattern.compile("and",Pattern.CASE_INSENSITIVE).matcher(word).matches()) {
+				param.addOperator(word.trim());
+			}
+			if(Pattern.compile("or",Pattern.CASE_INSENSITIVE).matcher(word).matches()) {
+				param.addOperator(word.trim());
+			}
+			
+		}
+		
+		
+		
 		//Checks column selected
 		String[] temp;
 		if((query.contains("select")) && (query.contains("from")) && !(query.contains("*"))) {

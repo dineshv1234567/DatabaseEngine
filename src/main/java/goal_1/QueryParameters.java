@@ -14,10 +14,11 @@ import java.util.regex.Pattern;
  */
 public class QueryParameters {
   private String filename=null, beforeWhere=null, afterWhere=null;
-  private ArrayList<String> conditions=new ArrayList<String>();
-  public ArrayList<String> columns=new ArrayList<String>();
-  private ArrayList<String> columnsOrderBy=new ArrayList<String>();
-  private ArrayList<String> columnsGroupBy=new ArrayList<String>();
+  private ArrayList<String> conditions=new ArrayList<>();
+  public ArrayList<String> columns=new ArrayList<>();
+  private ArrayList<String> columnsOrderBy=new ArrayList<>();
+  private ArrayList<String> columnsGroupBy=new ArrayList<>();
+  private ArrayList<String> operator=new ArrayList<>();
 
   public void setFileName(String fileName) throws Exception{
 	  if(Pattern.compile("1.csv",Pattern.CASE_INSENSITIVE).matcher(fileName).matches())
@@ -78,4 +79,12 @@ public class QueryParameters {
    public ArrayList<String> getColumnsGroupBy(){
       return columnsGroupBy;
   }
+   
+   public void addOperator(String col){
+	      operator.add(col);
+	  }
+
+  public ArrayList<String> getOperator(){
+	      return operator;
+	  }
 }
