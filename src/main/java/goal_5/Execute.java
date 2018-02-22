@@ -16,9 +16,9 @@ public class Execute {
 	
 	LinkedHashMap<String,ArrayList<Object>> result=new LinkedHashMap<String,ArrayList<Object>>();
 	LinkedHashMap<String,ArrayList<Object>> map=new LinkedHashMap<String,ArrayList<Object>>();
-	ArrayList<String> col=new ArrayList<String>();
-	ArrayList<String> cond=new ArrayList<String>();
-	ArrayList<String> head=new ArrayList<String>();
+	ArrayList<String> col=new ArrayList<>();
+	ArrayList<String> cond=new ArrayList<>();
+	ArrayList<String> head=new ArrayList<>();
 	ArrayList<String> operator=new ArrayList<>();
 	
 	public Execute(LinkedHashMap<String,ArrayList<Object>> map,int row,ArrayList<String> cond,ArrayList<String> col,ArrayList<String> op){

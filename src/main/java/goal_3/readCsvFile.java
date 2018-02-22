@@ -64,5 +64,6 @@ public class readCsvFile {
               }
               i++;
           }
+          System.out.println("");
     }
 }

@@ -50,6 +50,7 @@ public class Main1 {
             int row=mp.getHeader();
             
             //executing the query
+            System.out.println("------Result-------------------");
             Execute exe=new Execute(map,row,obj1.getConditions(),obj1.getColumns(),obj1.getOperator());
             exe.exequery();
 		
