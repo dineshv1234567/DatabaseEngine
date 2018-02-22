@@ -20,41 +20,35 @@ import java.util.regex.Pattern;
  */
 public class readCsvFile {
  public void read()  {
-
         String csvFile = "src/main/java/ipl1.csv";
-   
         String line = "";
         String[] columnName={};
         String[] columnData={};
         int i;
-        ArrayList<String> lines = new ArrayList<>();
-      //  LinkedHashMap<String, ArrayList<Object>> fileMap=new LinkedHashMap<String, ArrayList<Object>>();
+        ArrayList<String> lines = new ArrayList<String>();
         i=0;
         try  {
             BufferedReader br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null)
-             {
-            //	System.out.println(line);
-             	lines.add(line);
-             	
+            while ((line = br.readLine()) != null)   {
+             	lines.add(line);	
              }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+		System.out.println("-------Details of CSV File----------------"); 
+		
+        //adding column name
         columnName= lines.get(0).split(",");
  		System.out.print("Columns:");
           for(String val:columnName) {
                System.out.print(val+" | ");
-          	//	System.out.println("");
-
           }
           System.out.println("");
+          
+        //identifying column data column data  
         columnData= lines.get(1).split(",");
         System.out.print("ColType:");
         i=0;
-        
           for(String val:columnData){
               boolean checkInt=Pattern.compile("\\d+",Pattern.CASE_INSENSITIVE).matcher(val).matches();
               if(checkInt){
@@ -70,6 +64,5 @@ public class readCsvFile {
               }
               i++;
           }
- 
     }
 }

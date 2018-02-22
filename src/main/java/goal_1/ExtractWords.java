@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.regex.*;
 
 public class ExtractWords {
-
 	public QueryParameters find(String query) throws Exception {
 		String queryWords[] = query.split(" ");
 		QueryParameters param=new QueryParameters();
+		System.out.println("-------File details---------------");
 		
-		System.out.println("---------------");
 		//Check file name
 		for(String val:queryWords) {
 		boolean fileName=Pattern.compile(".+csv",Pattern.CASE_INSENSITIVE).matcher(val).matches();
-		if(fileName==true)
-		{System.out.println("Filename:"+val);
+		if(fileName==true){
+			System.out.println("Filename:"+val);
                 param.setFileName(val);
                 break;
         }
@@ -42,16 +41,13 @@ public class ExtractWords {
 			else
 			afterWherePart=query.substring(query.lastIndexOf("where")+6);	
         String[] separateByAnd = afterWherePart.split("and");
-		for(String val:separateByAnd)
-		{
+		for(String val:separateByAnd){
 			String[] separateByOr = val.split("or");
-			{
 			for(String val1:separateByOr) {
 				System.out.println(val1); 
                       param.addConditions(val1);
 			}
 			}
-		}
 		}
 		
 		//checks logical operators
@@ -59,7 +55,6 @@ public class ExtractWords {
 		System.out.println("Conditional Operator: and");
 		if(query.contains("or")) 
 		System.out.println("Conditional Operator: or");
-		
 		Pattern p = Pattern.compile("and");
 		Matcher m = p.matcher(query);
 		for(String word:queryWords) {
@@ -68,16 +63,12 @@ public class ExtractWords {
 			}
 			if(Pattern.compile("or",Pattern.CASE_INSENSITIVE).matcher(word).matches()) {
 				param.addOperator(word.trim());
-			}
-			
+			}	
 		}
-		
-		
 		
 		//Checks column selected
 		String[] temp;
 		if((query.contains("select")) && (query.contains("from")) && !(query.contains("*"))) {
-		
 		temp=query.split("from");
 		String[] temp1=temp[0].split("select");
 		if(temp1[1].length()>1) {
@@ -86,22 +77,16 @@ public class ExtractWords {
 		for(String val:temp2) {
 			System.out.println(val);
                    param.addColumns(val);
-		}
-		}
+			}
+			}
 		}
 		
-		//Select all
-		if((query.contains("select")) && (query.contains("from")) && (query.contains("*"))) {
-		//To be added	
-		}
-
 		//Check orderBy field
 		String orderBy="";
 		if(query.contains("order by")) {
 			System.out.println("Order By field:");
 			temp=query.split("order by");
-			if(temp[1].contains("group by"))
-			{
+			if(temp[1].contains("group by")) {
 				orderBy=temp[1].substring(0, temp[1].indexOf("group by"));
 			}
 			else {
@@ -119,8 +104,7 @@ public class ExtractWords {
 		if(query.contains("group by")) {
 			System.out.println("Group By field:");
 			temp=query.split("group by");
-			if(temp[1].contains("having"))
-			{
+			if(temp[1].contains("having"))	{
 				groupBy=temp[1].substring(0, temp[1].indexOf("having"));
 			}
 			else {
@@ -143,9 +127,8 @@ public class ExtractWords {
 			System.out.println(val);
             aggFnc.setAgg(val);
              }
-		}
+			}
 		}
 		return param;
 	}
-
 }

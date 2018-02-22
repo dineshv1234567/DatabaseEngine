@@ -11,17 +11,13 @@ public class MakeMap {
     public static 	String []header=null;
     int row=0;
     public LinkedHashMap<String,ArrayList<Object>> FileRead()throws IOException {
-	
-    	LinkedHashMap<String,ArrayList<Object>> obj = new LinkedHashMap<>();
+    	LinkedHashMap<String,ArrayList<Object>> obj = new LinkedHashMap<String, ArrayList<Object>>();
 	File f=new File("src/main/java/ipl1.csv");
 	BufferedReader br = new BufferedReader(new FileReader(f));
     String head=br.readLine();
     header=head.split(",");
-  /*  for(String temp : header) {
-    	System.out.println(temp);
-    }*/
     for(int i=0;i<header.length;i++) {
-    	ArrayList<Object> temp = new ArrayList<>();
+    	ArrayList<Object> temp = new ArrayList<Object>();
     	obj.put(header[i], temp);
     }
     head=br.readLine();
@@ -33,18 +29,7 @@ public class MakeMap {
     	    obj.put(header[i], p);
     	}
     	head=br.readLine();
-    }
-    
-//	for(String i:MakeMap.header) {
-//		System.out.println(i);
-//	}
-	
-//    for(int i=0;i<header.length;i++) {
-//	    	ArrayList<Object> p= obj.get(header[i]);
-//	    	System.out.println(header[i]+"|||||||||||||"+p);
-//	    }
-	  //  System.out.println("@@@@@@@@@@@"+obj.keySet());
-    	
+    }	
     br.close();
     row = (obj.get(header[0])).size();
     return obj;

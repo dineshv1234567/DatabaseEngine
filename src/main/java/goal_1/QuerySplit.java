@@ -3,9 +3,6 @@ package goal_1;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 public class QuerySplit {
-	
-
-
 	public String input() {
 		//Reading user query from command line
 		Scanner sc=new Scanner(System.in);
@@ -18,13 +15,11 @@ public class QuerySplit {
 		System.out.println("Entered Query:"+query);
 		}
 		sc.close();
-		return query;
-		
-	}
+		return query;	
+		}
 	
-	public String[] split1(String query) throws Exception
-	{
-		
+	public String[] split1(String query) throws Exception{
+		//splitting by white space
 		String queryArray[] = query.split(" ");
 		for(String val:queryArray) {
 			val=val.trim();
@@ -35,8 +30,8 @@ public class QuerySplit {
 	        }
 		}
 		return queryArray;
-	}
-}
+		}
+  	}
 
 	
 

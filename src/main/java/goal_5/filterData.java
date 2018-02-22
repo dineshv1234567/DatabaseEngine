@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class filterData {
-	 ArrayList<String> columns=new ArrayList<>();
-    ArrayList<String> condition=new ArrayList<>();
+	 ArrayList<String> columns=new ArrayList<String>();
+    ArrayList<String> condition=new ArrayList<String>();
     
 public void filterWheretField(ArrayList<String> condition){
 this.condition=condition;
@@ -26,7 +26,7 @@ this.columns=columns;
     String csvFile="/home/sapient/Desktop/jenkins_practice1/Assignment/ipl.csv";
     String line="";
    
-    ArrayList<String> lines=new ArrayList<>();
+    ArrayList<String> lines=new ArrayList<String>();
     
     try {
     	BufferedReader br =new BufferedReader(new FileReader(csvFile));
