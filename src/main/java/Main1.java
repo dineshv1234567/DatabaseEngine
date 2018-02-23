@@ -13,13 +13,18 @@ import goal_5.Execute;
 
 public class Main1 {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)  {
 			System.out.println("Hello");
 			
 			//reading and splitting query 
 			QuerySplit querySplit=new QuerySplit();
 			String query=querySplit.input();
-			String Arr[] = querySplit.split1(query);
+			String Arr[] = null;
+			try {
+				Arr = querySplit.split1(query);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			//displaying splitter query
 			System.out.println("Splitted Query:");
@@ -29,7 +34,12 @@ public class Main1 {
 			
 			//extract keywords and store in object
 			ExtractWords extract=new ExtractWords();
-			QueryParameters obj1=extract.find(query);
+			QueryParameters obj1 = null;
+			try {
+				obj1 = extract.find(query);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			System.out.println("------File Details-------------------");
 			System.out.println("Filename "+obj1.getFileName());
 			System.out.println("Before Where "+obj1.getBeforeWhere());
@@ -46,13 +56,22 @@ public class Main1 {
 			
 			//making LinkedHashmap 
 			MakeMap mp =new MakeMap();
-		    LinkedHashMap<String,ArrayList<Object>> map = mp.FileRead();
+		    LinkedHashMap<String, ArrayList<Object>> map = null;
+			try {
+				map = mp.FileRead();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
             int row=mp.getHeader();
             
             //executing the query
             System.out.println("------Result-------------------");
             Execute exe=new Execute(map,row,obj1.getConditions(),obj1.getColumns(),obj1.getOperator());
-            exe.exequery();
+            try {
+				exe.exequery();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		
 	} 
 
